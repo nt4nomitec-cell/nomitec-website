@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCTV Packages - NomiTec</title>
+    <meta name="description" content="Choose the perfect CCTV package for your home or business.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #00a8e8; --dark-blue: #0077b6; --light-blue: #90e0ef;
+            --green: #06d6a0; --red: #ef476f; --bg-body: #ffffff; --bg-secondary: #f8f9fa;
+            --bg-header: rgba(255, 255, 255, 0.98); --bg-card: #ffffff; --bg-input: #ffffff;
+            --text-primary: #2d3436; --text-secondary: #636e72; --text-muted: #b2bec3;
+            --border-color: #e0e0e0; --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.08); --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        [data-theme="dark"] {
+            --bg-body: #121212; --bg-secondary: #1e1e1e; --bg-header: rgba(30, 30, 30, 0.98);
+            --bg-card: #252525; --bg-input: #2d2d2d; --text-primary: #f1f1f1;
+            --text-secondary: #b2bec3; --text-muted: #636e72; --border-color: #333333;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.3); --shadow-md: 0 5px 20px rgba(0,0,0,0.4);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--text-primary); background-color: var(--bg-body); overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; } ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: var(--bg-header); backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .top-bar { background: var(--dark-blue); color: #ffffff; padding: 8px 0; font-size: 12px; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 5px; }
+        .top-bar a { color: #ffffff; margin-left: 15px; transition: 0.3s; font-size: 12px; }
+        .top-bar a:hover { color: var(--light-blue); }
+        .top-bar-email { font-size: 11px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 50px; width: auto; filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); transition: filter 0.3s ease; }
+        .logo-text h1 { font-size: 22px; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
+        .logo-text span { font-size: 11px; color: var(--text-secondary); font-weight: 500; letter-spacing: 0.3px; line-height: 1.3; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--text-primary); font-weight: 500; font-size: 14px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-blue); }
+        .nav-links a.active { color: var(--primary-blue); font-weight: 600; }
+        .theme-toggle { background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .theme-toggle:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+        .cta-button { background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); color: white !important; padding: 8px 18px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,168,232,0.3); font-size: 13px; }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,168,232,0.4); }
+        .mobile-menu { display: none; font-size: 24px; cursor: pointer; color: var(--text-primary); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-body); z-index: 999; padding: 80px 20px 20px; flex-direction: column; gap: 15px; }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a { font-size: 17px; padding: 14px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); font-weight: 500; }
+        .mobile-nav-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--text-primary); }
+        .packages { padding: 120px 0 80px; background: var(--bg-body); min-height: 100vh; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 38px; color: var(--text-primary); margin-bottom: 15px; }
+        .section-header p { font-size: 16px; color: var(--text-secondary); max-width: 700px; margin: 0 auto; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .package-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+        .package-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 3px solid var(--primary-blue);
+        }
+        .package-info { padding: 25px; text-align: center; }
+        .package-info h3 { font-size: 22px; color: var(--text-primary); margin-bottom: 10px; }
+        .package-info p { font-size: 15px; color: var(--text-secondary); margin-bottom: 20px; }
+        .package-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        .package-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,168,232,0.4);
+        }
+        .package-features {
+            text-align: left;
+            margin: 15px 0 20px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+        }
+        .package-features li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .package-features li i { color: var(--green); font-size: 12px; }
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,168,232,0.3);
+        }
+        .back-home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,168,232,0.4);
+        }
+        footer { background: #0a0a0a; color: white; padding: 50px 0 25px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .footer-about p { color: rgba(255,255,255,0.7); margin: 15px 0; line-height: 1.7; font-size: 14px; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
+        .social-links a:hover { background: var(--primary-blue); transform: translateY(-3px); }
+        .footer-column h4 { font-size: 16px; margin-bottom: 15px; }
+        .footer-column ul li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; }
+        .footer-column ul li i { margin-top: 3px; color: var(--primary-blue); font-size: 13px; }
+        .footer-column ul li a { color: rgba(255,255,255,0.7); transition: 0.3s; font-size: 14px; }
+        .footer-column ul li a:hover { color: var(--primary-blue); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 13px; }
+        @media (max-width: 968px) {
+            .nav-links { display: none; } .mobile-menu { display: block; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+            .packages { padding: 100px 0 60px; }
+            .section-header h2 { font-size: 30px; }
+            .packages-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 576px) {
+            .top-bar { padding: 6px 0; font-size: 11px; } .top-bar-content { justify-content: center; text-align: center; }
+            .top-bar-email { display: none; } .top-bar a { margin-left: 10px; font-size: 11px; }
+            .logo img { height: 45px; } .logo-text h1 { font-size: 20px; } .logo-text span { font-size: 10px; }
+            .packages { padding: 90px 0 50px; }
+            .section-header h2 { font-size: 26px; }
+            .package-image { height: 280px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 20px; } .footer-about { text-align: center; }
+            .social-links { justify-content: center; } .footer-column { text-align: center; } .footer-column ul li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-email"><i class="fas fa-envelope"></i> nomitec98@gmail.com | nt4nomitec@gmail.com</div>
+                    <div>
+                        <a href="tel:03293985470"><i class="fas fa-phone"></i> 0329-3985470</a>
+                        <a href="https://whatsapp.com/channel/0029VbCcYzMIt5rrb5KeqR1V" target="_blank"><i class="fab fa-whatsapp"></i> Join Channel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="./index.html" style="display: flex; align-items: center; gap: 12px;">
+                        <img src="logo.png" alt="NomiTec Logo">
+                        <div class="logo-text">
+                            <h1>NomiTec</h1>
+                            <span>Our Security is Your Peace of Mind.</span>
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./index.html#services">Services</a></li>
+                    <li><a href="./packages.html" class="active">Packages</a></li>
+                    <li><a href="./index.html#coverage">Coverage</a></li>
+                    <li><a href="./index.html#faq">FAQ</a></li>
+                    <li><a href="./index.html#about">About</a></li>
+                    <li><a href="./index.html#contact">Contact</a></li>
+                    <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button></li>
+                    <li><a href="tel:03293985470" class="cta-button"><i class="fas fa-phone"></i> Call Now</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-close" id="mobile-nav-close"><i class="fas fa-times"></i></div>
+        <a href="./index.html" class="mobile-nav-link">Home</a>
+        <a href="./index.html#services" class="mobile-nav-link">Services</a>
+        <a href="./packages.html" class="mobile-nav-link">Packages</a>
+        <a href="./index.html#coverage" class="mobile-nav-link">Coverage</a>
+        <a href="./index.html#faq" class="mobile-nav-link">FAQ</a>
+        <a href="./index.html#about" class="mobile-nav-link">About</a>
+        <a href="./index.html#contact" class="mobile-nav-link">Contact</a>
+        <a href="tel:03293985470" class="mobile-nav-link" style="background: var(--primary-blue); color: white; border-radius: 50px; text-align: center; border: none;"><i class="fas fa-phone"></i> Call Now</a>
+    </div>
+    <section class="packages">
+        <div class="container">
+            <a href="./index.html" class="back-home-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <div class="section-header">
+                <h2>Our CCTV Packages</h2>
+                <p>Choose the perfect security package for your home or business. All packages include professional installation, configuration, and ongoing support.</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <img src="package-1.jpg" alt="Basic CCTV Package - NomiTec" class="package-image">
+                    <div class="package-info">
+                        <h3>Basic CCTV Package</h3>
+                        <p>Perfect for small shops and homes</p>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check-circle"></i> 4 HD Cameras</li>
+                            <li><i class="fas fa-check-circle"></i> 1 DVR/NVR</li>
+                            <li><i class="fas fa-check-circle"></i> 500GB Hard Drive</li>
+                            <li><i class="fas fa-check-circle"></i> Free Installation</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile App Setup</li>
+                        </ul>
+                        <a href="https://wa.me/923293985470?text=I'm%20interested%20in%20Basic%20CCTV%20Package" class="package-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Book Now
+                        </a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="package-2.jpg" alt="Standard CCTV Package - NomiTec" class="package-image">
+                    <div class="package-info">
+                        <h3>Standard CCTV Package</h3>
+                        <p>Ideal for offices and medium businesses</p>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check-circle"></i> 8 HD Cameras</li>
+                            <li><i class="fas fa-check-circle"></i> 1 DVR/NVR</li>
+                            <li><i class="fas fa-check-circle"></i> 1TB Hard Drive</li>
+                            <li><i class="fas fa-check-circle"></i> Free Installation</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile App Setup</li>
+                            <li><i class="fas fa-check-circle"></i> Night Vision</li>
+                        </ul>
+                        <a href="https://wa.me/923293985470?text=I'm%20interested%20in%20Standard%20CCTV%20Package" class="package-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Book Now
+                        </a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="package-3.jpg" alt="Premium CCTV Package - NomiTec" class="package-image">
+                    <div class="package-info">
+                        <h3>Premium CCTV Package</h3>
+                        <p>Complete solution for large businesses</p>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check-circle"></i> 16 HD Cameras</li>
+                            <li><i class="fas fa-check-circle"></i> 1 NVR System</li>
+                            <li><i class="fas fa-check-circle"></i> 2TB Hard Drive</li>
+                            <li><i class="fas fa-check-circle"></i> Free Installation</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile App Setup</li>
+                            <li><i class="fas fa-check-circle"></i> Night Vision</li>
+                            <li><i class="fas fa-check-circle"></i> Remote Monitoring</li>
+                        </ul>
+                        <a href="https://wa.me/923293985470?text=I'm%20interested%20in%20Premium%20CCTV%20Package" class="package-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Book Now
+                        </a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="package-4.jpg" alt="Enterprise CCTV Package - NomiTec" class="package-image">
+                    <div class="package-info">
+                        <h3>Enterprise CCTV Package</h3>
+                        <p>Advanced security for warehouses & factories</p>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check-circle"></i> 32+ HD Cameras</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced NVR</li>
+                            <li><i class="fas fa-check-circle"></i> 4TB+ Storage</li>
+                            <li><i class="fas fa-check-circle"></i> Free Installation</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile App Setup</li>
+                            <li><i class="fas fa-check-circle"></i> Night Vision</li>
+                            <li><i class="fas fa-check-circle"></i> Remote Monitoring</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 Support</li>
+                        </ul>
+                        <a href="https://wa.me/923293985470?text=I'm%20interested%20in%20Enterprise%20CCTV%20Package" class="package-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Book Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <img src="logo.png" alt="NomiTec" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));">
+                        <div class="logo-text">
+                            <h1 style="color: white; font-size: 22px;">NomiTec</h1>
+                            <span style="color: #90e0ef; font-size: 11px; display: block; margin-top: 2px;">Our Security is Your Peace of Mind.</span>
+                        </div>
+                    </div>
+                    <p>Your trusted partner for CCTV installation, security systems, and IT services in Karachi.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1MAsuUqzdz/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/n4nomitec?stkn=MTY5ODZ1dWw0cm91Yw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbCcYzMIt5rrb5KeqR1V" target="_blank" aria-label="WhatsApp Channel"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./index.html#services">Services</a></li>
+                        <li><a href="./packages.html">Packages</a></li>
+                        <li><a href="./index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="./index.html#services">CCTV Installation</a></li>
+                        <li><a href="./index.html#services">Intercom Systems</a></li>
+                        <li><a href="./index.html#services">Alarm Systems</a></li>
+                        <li><a href="./index.html#services">Networking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:03293985470">0329-3985470</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:nomitec98@gmail.com">nomitec98@gmail.com</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:nt4nomitec@gmail.com">nt4nomitec@gmail.com</a></li>
+                        <li style="color: rgba(255,255,255,0.7); line-height: 1.5;"><i class="fas fa-map-marker-alt"></i> Plot no.136, Tashkand Colony, Masan Chowk, Subhanallah Masjid Road, Keamari, Karachi</li>
+                        <li><i class="fas fa-location-arrow"></i> <a href="https://maps.app.goo.gl/quMBDqe9Yeooxdh59" target="_blank" style="color: var(--primary-blue);">View on Google Maps</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 NomiTec. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const htmlElement = document.documentElement;
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        updateIcon(currentTheme);
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+        function updateIcon(theme) {
+            if (theme === 'dark') { themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun'); } 
+            else { themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon'); }
+        }
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileMenuBtn.addEventListener('click', () => { mobileNav.classList.add('active'); document.body.style.overflow = 'hidden'; });
+        mobileNavClose.addEventListener('click', () => { mobileNav.classList.remove('active'); document.body.style.overflow = 'auto'; });
+        mobileNavLinks.forEach(link => { link.addEventListener('click', () => { mobileNav.classList.remove('active'); document.body.style.overflow = 'auto'; }); });
+    </script>
+</body>
+</html>

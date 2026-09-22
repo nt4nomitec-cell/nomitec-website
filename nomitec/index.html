@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NomiTec - CCTV Installation & IT Services in Karachi</title>
+    <meta name="description" content="Professional CCTV Installation, Intercom Systems, Alarm Systems, Computer & Network Maintenance in Karachi. Call 0329-3985470.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #00a8e8; --dark-blue: #0077b6; --light-blue: #90e0ef;
+            --green: #06d6a0; --red: #ef476f; --bg-body: #ffffff; --bg-secondary: #f8f9fa;
+            --bg-header: rgba(255, 255, 255, 0.98); --bg-card: #ffffff; --bg-input: #ffffff;
+            --text-primary: #2d3436; --text-secondary: #636e72; --text-muted: #b2bec3;
+            --border-color: #e0e0e0; --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.08); --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        [data-theme="dark"] {
+            --bg-body: #121212; --bg-secondary: #1e1e1e; --bg-header: rgba(30, 30, 30, 0.98);
+            --bg-card: #252525; --bg-input: #2d2d2d; --text-primary: #f1f1f1;
+            --text-secondary: #b2bec3; --text-muted: #636e72; --border-color: #333333;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.3); --shadow-md: 0 5px 20px rgba(0,0,0,0.4);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--text-primary); background-color: var(--bg-body); overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; } ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: var(--bg-header); backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .top-bar { background: var(--dark-blue); color: #ffffff; padding: 8px 0; font-size: 12px; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 5px; }
+        .top-bar a { color: #ffffff; margin-left: 15px; transition: 0.3s; font-size: 12px; }
+        .top-bar a:hover { color: var(--light-blue); }
+        .top-bar-email { font-size: 11px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 50px; width: auto; filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px rgba(0, 0, 0, 0.5)); transition: filter 0.3s ease; }
+        .logo img:hover { filter: drop-shadow(0 0 12px rgba(0, 0, 0, 1)) drop-shadow(0 0 25px rgba(0, 0, 0, 0.8)); }
+        [data-theme="dark"] .logo img { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 15px rgba(0, 168, 232, 0.6)); }
+        [data-theme="dark"] .logo img:hover { filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 25px rgba(0, 168, 232, 0.8)); }
+        .logo-text h1 { font-size: 22px; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
+        .logo-text span { font-size: 11px; color: var(--text-secondary); font-weight: 500; letter-spacing: 0.3px; line-height: 1.3; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--text-primary); font-weight: 500; font-size: 14px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-blue); }
+        .nav-links a.active { color: var(--primary-blue); font-weight: 600; }
+        .theme-toggle { background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .theme-toggle:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+        .cta-button { background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); color: white !important; padding: 8px 18px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,168,232,0.3); font-size: 13px; }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,168,232,0.4); }
+        .mobile-menu { display: none; font-size: 24px; cursor: pointer; color: var(--text-primary); }
+        .mobile-nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-body); z-index: 999; padding: 80px 20px 20px; flex-direction: column; gap: 15px; }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a { font-size: 17px; padding: 14px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); font-weight: 500; }
+        .mobile-nav-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--text-primary); }
+        .hero { margin-top: 110px; background: linear-gradient(135deg, #16213e 0%, #0077b6 100%); color: #ffffff; padding: 60px 0; position: relative; overflow: hidden; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .hero-text h1 { font-size: 42px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero-text h1 span { color: var(--light-blue); }
+        .tagline { font-size: 17px; color: var(--green); margin-bottom: 20px; font-weight: 500; }
+        .hero-text p { font-size: 16px; margin-bottom: 30px; opacity: 0.9; }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary { background: var(--green); color: white; padding: 12px 25px; border-radius: 50px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; box-shadow: 0 4px 15px rgba(6,214,160,0.3); font-size: 15px; }
+        .btn-primary:hover { transform: translateY(-3px); }
+        .btn-secondary { background: transparent; color: white; padding: 12px 25px; border-radius: 50px; font-weight: 600; border: 2px solid white; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 15px; }
+        .btn-secondary:hover { background: white; color: var(--dark-blue); }
+        .hero-image { position: relative; perspective: 1000px; display: flex; justify-content: center; align-items: center; }
+        .hero-image img { max-width: 100%; max-height: 400px; width: auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); animation: hikvisionFloat 6s ease-in-out infinite; transform-origin: center center; }
+        @keyframes hikvisionFloat { 0%, 100% { transform: translateY(0px) rotateY(0deg) scale(1); } 25% { transform: translateY(-15px) rotateY(-3deg) scale(1.03); } 50% { transform: translateY(-5px) rotateY(0deg) scale(1); } 75% { transform: translateY(-15px) rotateY(3deg) scale(1.03); } }
+        .camera-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,168,232,0.3) 0%, transparent 70%); border-radius: 50%; animation: glowPulse 4s ease-in-out infinite; pointer-events: none; z-index: 0; }
+        @keyframes glowPulse { 0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); } }
+        .services { padding: 80px 0; background: var(--bg-secondary); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 15px; }
+        .section-header p { font-size: 16px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .service-card { background: var(--bg-card); padding: 35px 25px; border-radius: 20px; text-align: center; transition: 0.3s; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); border-color: var(--primary-blue); }
+        .service-icon { width: 65px; height: 65px; background: linear-gradient(135deg, var(--light-blue), var(--primary-blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 26px; color: white; }
+        .service-card h3 { font-size: 19px; margin-bottom: 12px; color: var(--text-primary); }
+        .service-card p { color: var(--text-secondary); font-size: 14px; }
+        .coverage { padding: 80px 0; background: var(--bg-body); }
+        .coverage-header { text-align: center; margin-bottom: 40px; }
+        .coverage-header h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 15px; }
+        .coverage-header > p { font-size: 16px; color: var(--text-secondary); max-width: 800px; margin: 0 auto 30px; }
+        .coverage-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 1000px; margin: 0 auto 30px; }
+        .coverage-item { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; background: var(--bg-card); border: 2px solid var(--border-color); border-radius: 50px; font-size: 14px; font-weight: 500; color: var(--text-primary); transition: 0.3s; box-shadow: var(--shadow-sm); }
+        .coverage-item:hover { background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); color: white; border-color: var(--primary-blue); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .coverage-item i { color: var(--green); font-size: 14px; }
+        .coverage-item:hover i { color: white; }
+        .coverage-footer { text-align: center; color: var(--text-secondary); font-size: 15px; max-width: 700px; margin: 0 auto; }
+        .faq { padding: 80px 0; background: var(--bg-secondary); }
+        .faq-header { text-align: center; margin-bottom: 40px; }
+        .faq-header h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 15px; }
+        .faq-header p { font-size: 16px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+        .faq-container { max-width: 900px; margin: 0 auto; background: var(--bg-card); border-radius: 15px; padding: 25px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color); }
+        .faq-item { border-bottom: 1px solid var(--border-color); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { width: 100%; padding: 18px 0; background: none; border: none; text-align: left; font-size: 16px; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Poppins', sans-serif; transition: color 0.3s; }
+        .faq-question:hover { color: var(--primary-blue); }
+        .faq-question i { transition: transform 0.3s; color: var(--text-secondary); }
+        .faq-question.active i { transform: rotate(180deg); color: var(--primary-blue); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+        .faq-answer.active { max-height: 200px; padding-bottom: 18px; }
+        .why-choose { padding: 80px 0; background: var(--bg-body); }
+        .why-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .why-text h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 20px; }
+        .why-text > p { font-size: 16px; color: var(--text-secondary); margin-bottom: 30px; }
+        .feature-item { display: flex; gap: 15px; margin-bottom: 20px; }
+        .feature-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--green), var(--light-blue)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; flex-shrink: 0; }
+        .feature-text h4 { font-size: 17px; color: var(--text-primary); margin-bottom: 5px; }
+        .feature-text p { color: var(--text-secondary); font-size: 14px; }
+        .why-image img { width: 100%; border-radius: 20px; box-shadow: var(--shadow-lg); }
+        .cta-section { background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); padding: 60px 0; text-align: center; color: white; }
+        .cta-section h2 { font-size: 32px; margin-bottom: 15px; }
+        .cta-section p { font-size: 16px; margin-bottom: 25px; opacity: 0.95; }
+        .phone-number { font-size: 36px; font-weight: 800; color: white; display: inline-flex; align-items: center; gap: 12px; margin: 15px 0; }
+        .contact { padding: 80px 0; background: var(--bg-secondary); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-info h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 20px; }
+        .contact-info > p { font-size: 16px; color: var(--text-secondary); margin-bottom: 30px; }
+        .contact-card { background: var(--bg-card); padding: 18px 20px; border-radius: 15px; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: 0.3s; }
+        .contact-card:hover { transform: translateX(10px); box-shadow: var(--shadow-md); }
+        .contact-card-icon { width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; flex-shrink: 0; }
+        .contact-card-content h4 { font-size: 13px; color: var(--text-secondary); margin-bottom: 3px; }
+        .contact-card-content p, .contact-card-content a { font-size: 14px; color: var(--text-primary); font-weight: 600; display: block; margin-bottom: 3px; line-height: 1.4; }
+        .contact-card-content a:last-child { margin-bottom: 0; }
+        .map-link { color: var(--primary-blue) !important; font-size: 13px !important; display: inline-flex; align-items: center; gap: 5px; margin-top: 5px; }
+        .map-link:hover { text-decoration: underline; }
+        .contact-form { background: var(--bg-card); padding: 30px; border-radius: 20px; box-shadow: var(--shadow-md); border: 1px solid var(--border-color); }
+        .contact-form h3 { margin-bottom: 25px; font-size: 22px; color: var(--text-primary); }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 6px; color: var(--text-primary); font-weight: 500; font-size: 14px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-primary); font-family: 'Poppins', sans-serif; font-size: 14px; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-blue); }
+        .submit-btn { background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); color: white; padding: 14px 35px; border: none; border-radius: 50px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,168,232,0.4); }
+        footer { background: #0a0a0a; color: white; padding: 50px 0 25px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .footer-about p { color: rgba(255,255,255,0.7); margin: 15px 0; line-height: 1.7; font-size: 14px; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
+        .social-links a:hover { background: var(--primary-blue); transform: translateY(-3px); }
+        .footer-column h4 { font-size: 16px; margin-bottom: 15px; }
+        .footer-column ul li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; }
+        .footer-column ul li i { margin-top: 3px; color: var(--primary-blue); font-size: 13px; }
+        .footer-column ul li a { color: rgba(255,255,255,0.7); transition: 0.3s; font-size: 14px; }
+        .footer-column ul li a:hover { color: var(--primary-blue); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 13px; }
+        @media (max-width: 968px) {
+            .nav-links { display: none; } .mobile-menu { display: block; }
+            .hero { margin-top: 100px; padding: 50px 0; }
+            .hero-content { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .hero-text h1 { font-size: 32px; } .hero-buttons { justify-content: center; }
+            .hero-image { order: -1; } .hero-image img { max-height: 300px; }
+            .why-content { grid-template-columns: 1fr; gap: 30px; } .why-image { order: -1; }
+            .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+            .section-header h2, .coverage-header h2, .faq-header h2, .why-text h2, .contact-info h2 { font-size: 28px; }
+            .services, .coverage, .faq, .why-choose, .contact { padding: 60px 0; }
+            .cta-section { padding: 50px 0; } .cta-section h2 { font-size: 26px; } .phone-number { font-size: 28px; }
+        }
+        @media (max-width: 576px) {
+            .top-bar { padding: 6px 0; font-size: 11px; } .top-bar-content { justify-content: center; text-align: center; }
+            .top-bar-email { display: none; } .top-bar a { margin-left: 10px; font-size: 11px; }
+            .logo img { height: 45px; } .logo-text h1 { font-size: 20px; } .logo-text span { font-size: 10px; }
+            .hero { margin-top: 90px; padding: 40px 0; } .hero-text h1 { font-size: 26px; }
+            .tagline { font-size: 15px; } .hero-text p { font-size: 14px; } .hero-image img { max-height: 250px; }
+            .btn-primary, .btn-secondary { padding: 10px 20px; font-size: 14px; }
+            .section-header h2, .coverage-header h2, .faq-header h2, .why-text h2, .contact-info h2 { font-size: 24px; }
+            .section-header p, .coverage-header > p, .faq-header p { font-size: 14px; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; } .service-card { padding: 25px 20px; }
+            .service-icon { width: 60px; height: 60px; font-size: 24px; } .service-card h3 { font-size: 17px; }
+            .coverage-item { padding: 8px 15px; font-size: 13px; }
+            .faq-container { padding: 20px 15px; } .faq-question { font-size: 14px; padding: 15px 0; } .faq-answer { font-size: 13px; }
+            .feature-item { gap: 12px; } .feature-icon { width: 40px; height: 40px; font-size: 16px; }
+            .feature-text h4 { font-size: 15px; } .feature-text p { font-size: 13px; }
+            .cta-section h2 { font-size: 22px; } .cta-section p { font-size: 14px; } .phone-number { font-size: 24px; }
+            .contact-form { padding: 25px 20px; } .contact-form h3 { font-size: 20px; }
+            .contact-card { padding: 15px; } .contact-card-icon { width: 45px; height: 45px; font-size: 18px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 20px; } .footer-about { text-align: center; }
+            .social-links { justify-content: center; } .footer-column { text-align: center; } .footer-column ul li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-email"><i class="fas fa-envelope"></i> nomitec98@gmail.com | nt4nomitec@gmail.com</div>
+                    <div>
+                        <a href="tel:03293985470"><i class="fas fa-phone"></i> 0329-3985470</a>
+                        <a href="https://whatsapp.com/channel/0029VbCcYzMIt5rrb5KeqR1V" target="_blank"><i class="fab fa-whatsapp"></i> Join Channel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="logo.png" alt="NomiTec Logo">
+                    <div class="logo-text">
+                        <h1>NomiTec</h1>
+                        <span>Our Security is Your Peace of Mind.</span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="#coverage">Coverage</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button></li>
+                    <li><a href="tel:03293985470" class="cta-button"><i class="fas fa-phone"></i> Call Now</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-close" id="mobile-nav-close"><i class="fas fa-times"></i></div>
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="#services" class="mobile-nav-link">Services</a>
+        <a href="packages.html" class="mobile-nav-link">Packages</a>
+        <a href="#coverage" class="mobile-nav-link">Coverage</a>
+        <a href="#faq" class="mobile-nav-link">FAQ</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="tel:03293985470" class="mobile-nav-link" style="background: var(--primary-blue); color: white; border-radius: 50px; text-align: center; border: none;"><i class="fas fa-phone"></i> Call Now</a>
+    </div>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Professional <span>CCTV Installation</span> & IT Services in Karachi</h1>
+                    <p class="tagline"><i class="fas fa-shield-alt"></i> Our Security is Your Peace of Mind.</p>
+                    <p>Protect your home, office, and business with cutting-edge surveillance systems, intercom solutions, and comprehensive IT maintenance services from NomiTec.</p>
+                    <div class="hero-buttons">
+                        <a href="tel:03293985470" class="btn-primary"><i class="fas fa-phone"></i> Call 0329-3985470</a>
+                        <a href="#services" class="btn-secondary"><i class="fas fa-list"></i> Our Services</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="camera-glow"></div>
+                    <img src="hikvision-camera.png" alt="Hikvision Professional CCTV Dome Camera - NomiTec">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Professional Services</h2>
+                <p>Comprehensive security and IT solutions tailored to protect and enhance your business operations</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card"><div class="service-icon"><i class="fas fa-video"></i></div><h3>CCTV Camera Installation</h3><p>Professional installation of HD and IP cameras for homes, offices, and commercial spaces with remote viewing.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-phone-volume"></i></div><h3>Intercom System</h3><p>Modern intercom solutions for offices, apartments, and commercial buildings to enhance communication.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-bell"></i></div><h3>Alarm System</h3><p>Advanced alarm and intrusion detection systems to protect your property with instant alerts.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>CCTV Maintenance</h3><p>Regular maintenance, troubleshooting, and repair services for existing CCTV systems.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-desktop"></i></div><h3>Computer Maintenance</h3><p>Complete computer repair, maintenance, and optimization services to keep systems running smoothly.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-plug"></i></div><h3>Printer/UPS Maintenance</h3><p>Professional maintenance and repair services for printers and UPS systems to minimize downtime.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-network-wired"></i></div><h3>All Networking</h3><p>Complete networking solutions including LAN/WAN setup, router configuration, and WiFi installation.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-shopping-cart"></i></div><h3>Product Purchasing / Sale</h3><p>Supply of high-quality CCTV cameras, networking equipment, computers, and IT accessories.</p></div>
+                <div class="service-card"><div class="service-icon"><i class="fas fa-clock"></i></div><h3>Attendance System</h3><p>Biometric and digital attendance systems for offices to automate employee tracking.</p></div>
+            </div>
+        </div>
+    </section>
+    <section class="coverage" id="coverage">
+        <div class="container">
+            <div class="coverage-header">
+                <h2>Areas We Serve in Karachi</h2>
+                <p>NomiTec provides professional CCTV installation and IT services across Karachi, including:</p>
+            </div>
+            <div class="coverage-grid">
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Keamari</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>DHA</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Clifton</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Shahrah-e-Faisal</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Korangi</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>SITE Area</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Saddar</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Tariq Road</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Baldia Town</span></div>
+                <div class="coverage-item"><i class="fas fa-map-marker-alt"></i><span>Shersha</span></div>
+            </div>
+            <p class="coverage-footer"><i class="fas fa-truck"></i> Our Karachi-based technical team provides free site surveys, professional installation, upgrades, and ongoing support for businesses throughout the city.</p>
+        </div>
+    </section>
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="faq-header">
+                <h2>CCTV Questions, Answered</h2>
+                <p>Find answers to the most common questions about our CCTV installation and IT services</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item"><button class="faq-question"><span>How much does CCTV Installation Cost in Karachi?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">The cost depends on the number of cameras, camera type, storage requirements, cabling distance, and installation complexity.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Which CCTV Brands do you Install?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">We install professional CCTV systems from trusted brands including Hikvision and Dahua depending on your security needs.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Can I Watch my CCTV Cameras from my Mobile Phone?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes. We configure secure remote viewing so you can access live footage and recordings through your smartphone, tablet, or computer.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Do you Install CCTV Cameras for Offices and Warehouses?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes. We provide commercial CCTV installation for offices, warehouses, factories, retail stores, schools, clinics, and corporate buildings.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>What is the Difference Between DVR and NVR?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">DVR systems are commonly used with analogue cameras, while NVR systems work with IP cameras and provide advanced network-based surveillance features.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>How Many Days of CCTV Recording can be Stored?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">Storage depends on camera resolution, number of cameras, recording mode, and hard drive capacity. We recommend storage based on your required retention period.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Do you provide CCTV Maintenance Services?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes. We provide troubleshooting, camera adjustment, storage checks, cable repair, system upgrades, and technical support.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Can you Upgrade my Existing CCTV System?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes. We can upgrade older analogue systems, add new cameras, improve storage capacity, and enable remote monitoring.</div></div>
+                <div class="faq-item"><button class="faq-question"><span>Do you Provide CCTV Installation Near Me in Karachi?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes. Our team provides CCTV installation and support throughout Karachi for commercial and business locations.</div></div>
+            </div>
+        </div>
+    </section>
+    <section class="why-choose" id="about">
+        <div class="container">
+            <div class="why-content">
+                <div class="why-text">
+                    <h2>Why Choose NomiTec?</h2>
+                    <p>We combine technical expertise with customer-focused service to deliver security solutions that truly protect what matters most to you.</p>
+                    <div class="feature-item"><div class="feature-icon"><i class="fas fa-certificate"></i></div><div class="feature-text"><h4>Expert Technicians</h4><p>Certified professionals with years of experience.</p></div></div>
+                    <div class="feature-item"><div class="feature-icon"><i class="fas fa-tags"></i></div><div class="feature-text"><h4>Competitive Pricing</h4><p>Best quality services at affordable rates.</p></div></div>
+                    <div class="feature-item"><div class="feature-icon"><i class="fas fa-headset"></i></div><div class="feature-text"><h4>After-Sales Support</h4><p>Dedicated technical support after installation.</p></div></div>
+                    <div class="feature-item"><div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div><div class="feature-text"><h4>Free Site Survey</h4><p>Comprehensive assessment to design the perfect solution.</p></div></div>
+                </div>
+                <div class="why-image"><img src="network-rack.png" alt="Professional Network Rack - NomiTec"></div>
+            </div>
+        </div>
+    </section>
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Secure Your Property?</h2>
+            <p>Get a free consultation and site survey today</p>
+            <a href="tel:03293985470" class="phone-number"><i class="fas fa-phone-alt"></i> 0329-3985470</a>
+            <br>
+            <a href="https://wa.me/923293985470" class="btn-primary" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>Contact us today for a free consultation. We're here to help secure your property and meet all your IT needs.</p>
+                    <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div><div class="contact-card-content"><h4>Phone</h4><a href="tel:03293985470">0329-3985470</a></div></div>
+                    <div class="contact-card"><div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div><div class="contact-card-content"><h4>WhatsApp</h4><a href="https://wa.me/923293985470" target="_blank">Chat with us</a></div></div>
+                    <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-bullhorn"></i></div><div class="contact-card-content"><h4>WhatsApp Channel</h4><a href="https://whatsapp.com/channel/0029VbCcYzMIt5rrb5KeqR1V" target="_blank">Join our Channel for Updates</a></div></div>
+                    <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-envelope"></i></div><div class="contact-card-content"><h4>Email</h4><a href="mailto:nomitec98@gmail.com">nomitec98@gmail.com</a><a href="mailto:nt4nomitec@gmail.com">nt4nomitec@gmail.com</a></div></div>
+                    <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-card-content"><h4>Our Location</h4><p>Plot no.136, Tashkand Colony, Masan Chowk,<br>Subhanallah Masjid Road, Keamari, Karachi</p><a href="https://maps.app.goo.gl/quMBDqe9Yeooxdh59" target="_blank" class="map-link"><i class="fas fa-location-arrow"></i> View on Google Maps</a></div></div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form name="contact" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact" /><input type="hidden" name="bot-field" />
+                        <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Enter your full name" required></div>
+                        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="Enter your phone number" required></div>
+                        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="Enter your email"></div>
+                        <div class="form-group"><label>Service Required</label><input type="text" name="service" placeholder="e.g., CCTV Installation"></div>
+                        <div class="form-group"><label>Your Message</label><textarea name="message" placeholder="Tell us about your requirements..." rows="4"></textarea></div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">
+                        <img src="logo.png" alt="NomiTec" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));">
+                        <div class="logo-text">
+                            <h1 style="color: white; font-size: 22px;">NomiTec</h1>
+                            <span style="color: #90e0ef; font-size: 11px; display: block; margin-top: 2px;">Our Security is Your Peace of Mind.</span>
+                        </div>
+                    </div>
+                    <p>Your trusted partner for CCTV installation, security systems, and IT services in Karachi.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1MAsuUqzdz/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/n4nomitec?stkn=MTY5ODZ1dWw0cm91Yw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbCcYzMIt5rrb5KeqR1V" target="_blank" aria-label="WhatsApp Channel"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="#coverage">Coverage Area</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#services">CCTV Installation</a></li>
+                        <li><a href="#services">Intercom Systems</a></li>
+                        <li><a href="#services">Alarm Systems</a></li>
+                        <li><a href="#services">Networking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:03293985470">0329-3985470</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:nomitec98@gmail.com">nomitec98@gmail.com</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:nt4nomitec@gmail.com">nt4nomitec@gmail.com</a></li>
+                        <li style="color: rgba(255,255,255,0.7); line-height: 1.5;"><i class="fas fa-map-marker-alt"></i> Plot no.136, Tashkand Colony, Masan Chowk, Subhanallah Masjid Road, Keamari, Karachi</li>
+                        <li><i class="fas fa-location-arrow"></i> <a href="https://maps.app.goo.gl/quMBDqe9Yeooxdh59" target="_blank" style="color: var(--primary-blue);">View on Google Maps</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 NomiTec. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const htmlElement = document.documentElement;
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        updateIcon(currentTheme);
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+        function updateIcon(theme) {
+            if (theme === 'dark') { themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun'); } 
+            else { themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon'); }
+        }
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileMenuBtn.addEventListener('click', () => { mobileNav.classList.add('active'); document.body.style.overflow = 'hidden'; });
+        mobileNavClose.addEventListener('click', () => { mobileNav.classList.remove('active'); document.body.style.overflow = 'auto'; });
+        mobileNavLinks.forEach(link => { link.addEventListener('click', () => { mobileNav.classList.remove('active'); document.body.style.overflow = 'auto'; }); });
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                faqQuestions.forEach(q => { q.classList.remove('active'); q.nextElementSibling.classList.remove('active'); });
+                if (!isActive) { question.classList.add('active'); answer.classList.add('active'); }
+            });
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

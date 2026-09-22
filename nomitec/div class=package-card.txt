@@ -1,0 +1,10 @@
+<div class="package-card">
+    <img src="package-3.png" alt="CCTV Package 3 - NomiTec" class="package-image">
+    <div class="package-info">
+        <h3>Package Ka Naam</h3>
+        <p>Package ki description</p>
+        <a href="https://wa.me/923293985470?text=I'm%20interested%20in%20Package%20Name" class="package-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Book Now
+        </a>
+    </div>
+</div>
