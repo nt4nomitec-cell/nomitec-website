@@ -374,17 +374,37 @@
                 <div class="contact-form">
                     <h3>Send Us a Message</h3>
                     <!-- FORMSUBMIT FORM - Vercel Compatible -->
-                    <form action="https://formsubmit.co/nomitec98@gmail.com" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://nomitec.vercel.app/thank-you.html">
-                        <input type="hidden" name="_subject" value="New Contact from NomiTec Website">
-                        <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Enter your full name" required></div>
-                        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="Enter your phone number" required></div>
-                        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="Enter your email"></div>
-                        <div class="form-group"><label>Service Required</label><input type="text" name="service" placeholder="e.g., CCTV Installation"></div>
-                        <div class="form-group"><label>Your Message</label><textarea name="message" placeholder="Tell us about your requirements..." rows="4"></textarea></div>
-                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-                    </form>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+    <!-- Yahan apni Access Key dalein -->
+    <input type="hidden" name="access_key" value="957ba6eb-7a65-494b-873f-530b318a45b7">
+    
+    <input type="hidden" name="subject" value="New Contact from NomiTec Website">
+    <input type="hidden" name="from_name" value="NomiTec Website">
+    
+    <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Enter your full name" required>
+    </div>
+    <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="Enter your phone number" required>
+    </div>
+    <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+        <label>Service Required</label>
+        <input type="text" name="service" placeholder="e.g., CCTV Installation">
+    </div>
+    <div class="form-group">
+        <label>Your Message</label>
+        <textarea name="message" placeholder="Tell us about your requirements..." rows="4"></textarea>
+    </div>
+    <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> Send Message
+    </button>
+</form>
                 </div>
             </div>
         </div>
