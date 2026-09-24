@@ -5,8 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCTV Packages - NomiTec</title>
     
-    <!-- Favicon (Browser Tab Logo) -->
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <!-- Favicon Setup -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="manifest" href="images/manifest.json">
+    <meta name="msapplication-TileColor" content="#0077b6">
+    <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#00a8e8">
     
     <meta name="description" content="Choose the perfect CCTV package for your home or business.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,7 +56,18 @@
         .top-bar-email { font-size: 11px; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
         .logo { display: flex; align-items: center; gap: 12px; }
-        .logo img { height: 50px; width: auto; }
+        
+        /* LOGO SIZE & GLOW FIX */
+        .logo img { 
+            height: 50px; 
+            width: auto; 
+            filter: drop-shadow(0 0 8px rgba(0, 168, 232, 0.6)) drop-shadow(0 0 15px rgba(0, 168, 232, 0.4));
+            transition: filter 0.3s ease;
+        }
+        .logo img:hover { 
+            filter: drop-shadow(0 0 12px rgba(0, 168, 232, 1)) drop-shadow(0 0 25px rgba(0, 168, 232, 0.8));
+        }
+        
         .logo-text h1 { font-size: 22px; font-weight: 800; color: var(--text-primary); line-height: 1.1; }
         .logo-text span { font-size: 11px; color: var(--text-secondary); font-weight: 500; letter-spacing: 0.3px; line-height: 1.3; }
         .nav-links { display: flex; gap: 20px; align-items: center; }
@@ -55,6 +83,7 @@
         .mobile-nav.active { display: flex; }
         .mobile-nav a { font-size: 17px; padding: 14px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); font-weight: 500; }
         .mobile-nav-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--text-primary); }
+        
         .packages { padding: 120px 0 80px; background: var(--bg-body); min-height: 100vh; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 38px; color: var(--text-primary); margin-bottom: 15px; }
@@ -115,24 +144,43 @@
             gap: 8px;
         }
         .package-features li i { color: var(--green); font-size: 12px; }
-        .back-home-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 15px;
-            margin-bottom: 30px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,168,232,0.3);
-        }
+        
+       @media (max-width: 576px) {
+    .top-bar { padding: 6px 0; font-size: 11px; } 
+    .top-bar-content { justify-content: center; text-align: center; }
+    .top-bar-email { display: none; } 
+    .top-bar a { margin-left: 10px; font-size: 11px; }
+    .logo img { height: 45px; } 
+    .logo-text h1 { font-size: 20px; } 
+    .logo-text span { font-size: 10px; }
+    .packages { padding: 90px 0 50px; }
+    .section-header h2 { font-size: 26px; }
+    .package-image { height: 280px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 20px; } 
+    .footer-about { text-align: center; }
+    .social-links { justify-content: center; } 
+    .footer-column { text-align: center; } 
+    .footer-column ul li { justify-content: center; }
+    
+    /* MOBILE BACK BUTTON - SMALL & CENTERED */
+    .back-home-btn {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+        width: auto !important;
+        max-width: 180px !important;
+        margin: 0 auto 20px auto !important;
+        display: inline-flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+    }
+}
+}
         .back-home-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,168,232,0.4);
         }
+
         footer { background: #0a0a0a; color: white; padding: 50px 0 25px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
         .footer-about p { color: rgba(255,255,255,0.7); margin: 15px 0; line-height: 1.7; font-size: 14px; }
@@ -145,6 +193,7 @@
         .footer-column ul li a { color: rgba(255,255,255,0.7); transition: 0.3s; font-size: 14px; }
         .footer-column ul li a:hover { color: var(--primary-blue); padding-left: 5px; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 13px; }
+        
         @media (max-width: 968px) {
             .nav-links { display: none; } .mobile-menu { display: block; }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
@@ -161,6 +210,16 @@
             .package-image { height: 280px; }
             .footer-grid { grid-template-columns: 1fr; gap: 20px; } .footer-about { text-align: center; }
             .social-links { justify-content: center; } .footer-column { text-align: center; } .footer-column ul li { justify-content: center; }
+            
+            /* MOBILE BACK BUTTON FIX */
+            .back-home-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                width: 100%;
+                max-width: 250px;
+                margin: 0 auto 25px auto;
+                display: flex;
+            }
         }
     </style>
 </head>
