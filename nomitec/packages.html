@@ -235,43 +235,55 @@
                 display: flex;
             }
         }
-    </style>
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/923293985470?text=Assalam-o-Alaikum!%20Mujhe%20CCTV%20Installation%20ke%20baray%20mein%20maloomat%20chahiye." 
-   class="float-whatsapp" target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-whatsapp my-float"></i>
-</a>
 
-<style>
-.float-whatsapp {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 30px;
-    right: 30px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
+/* WhatsApp Button Mobile Fix */
+@media (max-width: 576px) {
+    .float-whatsapp {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        left: 20px;   /* Mobile par Left side */
+        font-size: 28px;
+    }
 }
-.float-whatsapp:hover {
-    background-color: #128C7E;
-    transform: scale(1.1);
+
+/* 1. Trusted Brands Strip */
+.brands-section { padding: 40px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+.brands-title { text-align: center; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+.brands-grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 30px; max-width: 1000px; margin: 0 auto; }
+.brand-item { font-size: 20px; font-weight: 700; color: var(--text-muted); opacity: 0.6; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+.brand-item:hover { opacity: 1; color: var(--primary-blue); transform: scale(1.05); }
+
+/* 2. Live Animated Counters */
+.stats-section { padding: 80px 0; background: linear-gradient(135deg, #16213e 0%, #0077b6 100%); color: white; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+.stat-card { padding: 20px; }
+.stat-number { font-size: 48px; font-weight: 800; color: var(--green); margin-bottom: 10px; display: block; }
+.stat-label { font-size: 16px; opacity: 0.9; font-weight: 500; }
+
+/* 3. Portfolio Gallery */
+.portfolio-section { padding: 80px 0; background: var(--bg-body); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+.portfolio-card { position: relative; border-radius: 15px; overflow: hidden; height: 250px; box-shadow: var(--shadow-md); cursor: pointer; }
+.portfolio-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.portfolio-card:hover img { transform: scale(1.1); }
+.portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: white; }
+.portfolio-overlay h4 { font-size: 18px; margin-bottom: 5px; }
+.portfolio-overlay p { font-size: 13px; opacity: 0.9; }
+
+/* 4. Embedded Google Map */
+.map-container { width: 100%; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-color); margin-top: 20px; }
+.map-container iframe { width: 100%; height: 100%; border: 0; }
+
+@media (max-width: 576px) {
+    .stat-number { font-size: 36px; }
+    .brands-grid { gap: 20px; }
+    .brand-item { font-size: 16px; }
+    .map-container { height: 300px; }
 }
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-</style>
+
+
+    </style>
 </head>
 <body>
     <header>
@@ -297,20 +309,35 @@
                         </div>
                     </a>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="packages.html" class="active">Packages</a></li>
-                    <li><a href="index.html#coverage">Coverage</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button></li>
-                    <li><a href="tel:03293985470" class="cta-button"><i class="fas fa-phone"></i> Call Now</a></li>
-                </ul>
+                
+<ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#coverage">Coverage</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    
+    <!-- Buttons ko bhi li mein wrap kar dein -->
+    <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button></li>
+    <li><a href="tel:03293985470" class="cta-button"><i class="fas fa-phone"></i> Call Now</a></li>
+    <li><button class="search-toggle" onclick="toggleSearch()" aria-label="Search"><i class="fas fa-search"></i></button></li>
+</ul>
+
                 <div class="mobile-menu" id="mobile-menu-btn"><i class="fas fa-bars"></i></div>
             </nav>
         </div>
+<!-- Live Search Container -->
+<div class="search-container" id="searchContainer">
+    <div class="container search-box-wrapper">
+        <i class="fas fa-search search-icon-main"></i>
+        <input type="text" id="searchInput" placeholder="Search CCTV, Packages, Services..." onkeyup="liveSearch()" autocomplete="off">
+        <button class="search-close" onclick="closeSearch()"><i class="fas fa-times"></i></button>
+    </div>
+    <ul id="searchResultsList" class="search-results-list"></ul>
+</div>
     </header>
     <div class="mobile-nav" id="mobile-nav">
         <div class="mobile-nav-close" id="mobile-nav-close"><i class="fas fa-times"></i></div>
@@ -408,56 +435,228 @@
             </div>
         </div>
     </section>
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <div class="logo">
-                        <img src="images/logo.png" alt="NomiTec">
-                        <div class="logo-text">
-                            <h1 style="color: white; font-size: 22px;">NomiTec</h1>
-                            <span style="color: #90e0ef; font-size: 11px; display: block; margin-top: 2px;">Our Security is Your Peace of Mind.</span>
-                        </div>
-                    </div>
-                    <p>Your trusted partner for CCTV installation, security systems, and IT services in Karachi.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1MAsuUqzdz/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/n4nomitec?stkn=MTY5ODZ1dWw0cm91Yw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://whatsapp.com/channel/0029VbCcYzMIt5rrb5KeqR1V" target="_blank" aria-label="WhatsApp Channel"><i class="fab fa-whatsapp"></i></a>
+   
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            
+            <!-- LEFT COLUMN: Logo, About, Social + MAP (Yahan Map Aayega) -->
+            <div class="footer-about">
+                <div class="logo">
+                    <img src="images/logo.png" alt="NomiTec">
+                    <div class="logo-text">
+                        <h1 style="color: white; font-size: 22px;">NomiTec</h1>
+                        <span style="color: #90e0ef; font-size: 11px; display: block; margin-top: 2px;">Our Security is Your Peace of Mind.</span>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="packages.html">Packages</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
+                <p>Your trusted partner for CCTV installation, security systems, and IT services in Karachi.</p>
+                
+                <!-- Social Icons -->
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1MAsuUqzdz/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/n4nomitec?stkn=MTY5ODZ1dWw0cm91Yw==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://whatsapp.com/channel/0029VbCcYzMIt5rrb5KeqR1V" target="_blank" aria-label="WhatsApp Channel"><i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="footer-column">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="index.html#services">CCTV Installation</a></li>
-                        <li><a href="index.html#services">Intercom Systems</a></li>
-                        <li><a href="index.html#services">Alarm Systems</a></li>
-                        <li><a href="index.html#services">Networking</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> <a href="tel:03293985470">0329-3985470</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:nomitec98@gmail.com">nomitec98@gmail.com</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:nt4nomitec@gmail.com">nt4nomitec@gmail.com</a></li>
-                        <li style="color: rgba(255,255,255,0.7); line-height: 1.5;"><i class="fas fa-map-marker-alt"></i> Plot no.136, Tashkand Colony, Masan Chowk, Subhanallah Masjid Road, Keamari, Karachi</li>
-                        <li><i class="fas fa-location-arrow"></i> <a href="https://maps.app.goo.gl/quMBDqe9Yeooxdh59" target="_blank" style="color: var(--primary-blue);">View on Google Maps</a></li>
-                    </ul>
+
+                <!-- Map Ab Social Icons Ke Neeche -->
+                <div class="footer-map-small">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3621.193294660097!2d66.99793749999999!3d24.823062499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1790675248163!5m2!1sen!2s" 
+                        style="border:0; width: 100%; height: 100%; border-radius: 8px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="strict-origin-when-cross-origin">
+                    </iframe>
                 </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2026 NomiTec. All Rights Reserved.</p></div>
+
+            <!-- Quick Links -->
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Our Services -->
+            <div class="footer-column">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="index.html#services">CCTV Installation</a></li>
+                    <li><a href="index.html#services">Intercom Systems</a></li>
+                    <li><a href="index.html#services">Alarm Systems</a></li>
+                    <li><a href="index.html#services">Networking</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info Column (Link Removed) -->
+<div class="footer-column">
+    <h4>Contact Info</h4>
+    <ul>
+        <li><i class="fas fa-phone"></i> <a href="tel:03293985470">0329-3985470</a></li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:nomitec98@gmail.com">nomitec98@gmail.com</a></li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:nt4nomitec@gmail.com">nt4nomitec@gmail.com</a></li>
+        <li style="color: rgba(255,255,255,0.7); line-height: 1.5;"><i class="fas fa-map-marker-alt"></i> Plot no.136, Tashkand Colony, Masan Chowk, Subhanallah Masjid Road, Keamari, Karachi</li>
+    </ul>
+</div>
         </div>
-    </footer>
+
+        <!-- Footer Bottom (Powered By & Copyright) -->
+        <div class="footer-bottom-new">
+            <div class="footer-bottom-left">
+                <p><i class="fas fa-laptop-code" style="color: #90e0ef; margin-right: 8px;"></i> Powered by <strong style="color: #90e0ef; font-weight: 700;">NomiTec</strong></p>
+            </div>
+            <div class="footer-bottom-right">
+                <p>&copy; 2026 NomiTec. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+/* === FOOTER STYLES === */
+footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 50px 0 25px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.footer-about p {
+    color: rgba(255,255,255,0.7);
+    margin: 15px 0;
+    line-height: 1.7;
+    font-size: 14px;
+}
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.social-links a {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: 0.3s;
+}
+.social-links a:hover {
+    background: var(--primary-blue);
+    transform: translateY(-3px);
+}
+
+/* === SMALL MAP IN LEFT COLUMN (Compact Size) === */
+.footer-map-small {
+    width: 100%;
+    height: 120px; /* 160px se kam karke 120px kar diya */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 168, 232, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.footer-map-small:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 168, 232, 0.3);
+}
+.footer-map-small iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* Mobile par thora bara rahega taake touch karne mein asani ho */
+@media (max-width: 576px) {
+    .footer-map-small { height: 150px; } 
+}
+
+
+/* === FOOTER COLUMNS === */
+.footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.footer-column ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+}
+.footer-column ul li i {
+    margin-top: 3px;
+    color: var(--primary-blue);
+    font-size: 13px;
+}
+.footer-column ul li a {
+    color: rgba(255,255,255,0.7);
+    transition: 0.3s;
+    font-size: 14px;
+}
+.footer-column ul li a:hover {
+    color: var(--primary-blue);
+    padding-left: 5px;
+}
+
+/* === FOOTER BOTTOM === */
+.footer-bottom-new {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding-top: 25px !important;
+    margin-top: 30px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.footer-bottom-new p {
+    margin: 0 !important;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+.footer-bottom-left p {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+}
+@media (max-width: 576px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+    .footer-about { text-align: center; }
+    .social-links { justify-content: center; }
+    .footer-column ul li { justify-content: center; }
+    
+    .footer-map-small { height: 180px; margin: 15px auto 0; max-width: 100%; }
+    
+    .footer-bottom-new {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 10px !important;
+    }
+    .footer-bottom-left p { justify-content: center !important; }
+}
+</style>
+
+
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeIcon = themeToggleBtn.querySelector('i');
@@ -484,5 +683,559 @@
         mobileNavClose.addEventListener('click', () => { mobileNav.classList.remove('active'); document.body.style.overflow = 'auto'; });
         mobileNavLinks.forEach(link => { link.addEventListener('click', () => { mobileNav.classList.remove('active'); document.body.style.overflow = 'auto'; }); });
     </script>
+<!-- NomiTec Multi-Step Smart Chatbot (Updated with Favicon Logo) -->
+<div class="nt-chat-container">
+    <button class="nt-chat-toggle" onclick="toggleChat()">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <div class="nt-chat-box" id="ntChatBox" style="display: none;">
+        <div class="nt-chat-header">
+            <div class="nt-profile">
+                <!-- Yahan favicon wala logo lagaya gaya hai -->
+                <img src="images/favicon.ico" alt="NomiTec" class="nt-header-logo">
+                <div class="nt-info">
+                    <h4>NomiTec Support</h4>
+                    <span class="nt-status">● Online</span>
+                </div>
+            </div>
+            <button class="nt-close-btn" onclick="toggleChat()">&times;</button>
+        </div>
+
+        <div class="nt-chat-body" id="ntChatBody">
+            <!-- Messages yahan aayenge -->
+        </div>
+    </div>
+</div>
+
+<style>
+
+/* Active Tab Highlighting */
+
+ {
+    color: var(--primary-blue) !important; /* Ya jo bhi aapka theme color hai */
+    font-weight: 700;
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+/* Mobile Menu Active State */
+@media (max-width: 768px) {
+    .nav-links a.active {
+        background: rgba(0, 168, 232, 0.1); /* Mobile par halka background */
+        border-radius: 5px;
+    }
+}
+
+/* Styling */
+.nt-chat-container { position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: 'Poppins', sans-serif; }
+.nt-chat-toggle {
+    width: 60px; height: 60px; border-radius: 50%; border: none;
+    background: #25D366; color: white; font-size: 32px; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    display: flex; align-items: center; justify-content: center;
+    animation: ntPulse 2s infinite;
+}
+@keyframes ntPulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.nt-chat-box {
+    width: 350px; height: 500px; background: #fff; border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden;
+    position: absolute; bottom: 80px; right: 0;
+}
+.nt-chat-header {
+    background: #00a8e8; color: white; padding: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.nt-profile { display: flex; align-items: center; gap: 10px; }
+
+/* NEW: Favicon Logo Styling with Glow */
+.nt-header-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Bilkul round */
+    background: white; /* White background taake logo pop kare */
+    padding: 4px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Halka sa glow */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.nt-header-logo:hover {
+    transform: scale(1.1) rotate(5deg); /* Mouse le jane par thora move kare */
+}
+
+.nt-info h4 { margin: 0; font-size: 16px; }
+.nt-status { font-size: 12px; opacity: 0.9; }
+.nt-close-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+.nt-chat-body {
+    flex: 1; padding: 15px; background: #e5ddd5;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23d1c7b7" fill-opacity="0.2"><path d="M10 10h10v10H10zM30 30h10v10H30zM50 50h10v10H50zM70 70h10v10H70zM90 90h10v10H90z"/></g></svg>');
+    overflow-y: auto; display: flex; flex-direction: column; gap: 10px;
+}
+.nt-message { max-width: 85%; padding: 12px 15px; border-radius: 10px; font-size: 14px; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+.nt-bot { background: white; color: #333; border-top-left-radius: 0; align-self: flex-start; }
+.nt-user { background: #dcf8c6; color: #333; border-top-right-radius: 0; align-self: flex-end; }
+
+/* Dynamic Buttons Styling */
+.nt-buttons-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
+.nt-btn {
+    background: white; border: 1px solid #00a8e8; color: #00a8e8;
+    padding: 8px 12px; border-radius: 20px; font-size: 13px; cursor: pointer;
+    transition: 0.3s; font-family: 'Poppins', sans-serif; text-align: center;
+}
+.nt-btn:hover { background: #00a8e8; color: white; }
+.nt-btn.wa-btn { background: #25D366; color: white; border-color: #25D366; width: 100%; justify-content: center; display: flex; align-items: center; gap: 5px; text-decoration: none;}
+.nt-btn.wa-btn:hover { background: #128C7E; }
+.nt-btn.back-btn { background: #f0f0f0; color: #555; border-color: #ccc; }
+
+@media (max-width: 576px) {
+    .nt-chat-box { width: 300px; height: 450px; right: -10px; }
+    .nt-chat-toggle { width: 55px; height: 55px; font-size: 28px; }
+}
+
+/* Live Search Styling */
+.search-toggle {
+    background: var(--bg-secondary); border: 1px solid var(--border-color);
+    color: var(--text-primary); width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 16px; transition: 0.3s;
+}
+.search-toggle:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+
+.search-container {
+    display: none; position: fixed; top: 110px; left: 0; width: 100%;
+    background: var(--bg-header); backdrop-filter: blur(10px);
+    z-index: 998; border-bottom: 1px solid var(--border-color);
+    animation: slideDown 0.3s ease;
+}
+@keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.search-box-wrapper {
+    display: flex; align-items: center; gap: 15px;
+    background: var(--bg-card); padding: 12px 25px; border-radius: 50px;
+    box-shadow: var(--shadow-md); margin-top: 15px; border: 1px solid var(--border-color);
+}
+.search-icon-main { color: var(--primary-blue); font-size: 18px; }
+
+.search-box-wrapper input {
+    flex: 1; border: none; background: transparent;
+    font-size: 16px; color: var(--text-primary);
+    font-family: 'Poppins', sans-serif; outline: none;
+}
+.search-close {
+    background: none; border: none; color: var(--text-secondary);
+    font-size: 18px; cursor: pointer; transition: 0.3s;
+}
+.search-close:hover { color: var(--red); }
+
+/* Results Dropdown */
+.search-results-list {
+    list-style: none; max-height: 350px; overflow-y: auto;
+    background: var(--bg-card); margin: 15px auto; width: 90%; max-width: 1160px;
+    border-radius: 15px; box-shadow: var(--shadow-lg); padding: 10px;
+    border: 1px solid var(--border-color);
+}
+.search-result-item {
+    display: flex; align-items: center; gap: 15px; padding: 12px 15px;
+    border-radius: 10px; cursor: pointer; transition: 0.2s;
+    border-bottom: 1px solid var(--border-color);
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: var(--bg-secondary); transform: translateX(5px); }
+
+.result-icon {
+    width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+}
+.result-info h4 { margin: 0; font-size: 15px; color: var(--text-primary); font-weight: 600; }
+.result-info p { margin: 3px 0 0; font-size: 12px; color: var(--text-secondary); }
+
+@media (max-width: 576px) {
+    .search-container { top: 90px; }
+    .search-box-wrapper { padding: 10px 15px; }
+}
+
+/* Perfect Footer Bottom Alignment */
+.footer-bottom {
+    display: flex !important;
+    justify-content: space-between !important; /* Left aur Right force karne ke liye */
+    align-items: center !important;
+    width: 100% !important;
+    padding-top: 25px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-left-text strong {
+    color: #90e0ef; /* Aapke theme color se match */
+    font-weight: 700;
+}
+
+/* Clean Code Symbol Styling */
+.code-symbol {
+    font-family: 'Courier New', Courier, monospace; /* Code jaisa font */
+    color: #90e0ef;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 6px;
+    letter-spacing: -1px;
+}
+
+/* Mobile par dono center ho jayenge */
+@media (max-width: 576px) {
+    .footer-bottom {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 10px;
+    }
+}
+
+/* Clean Code Symbol Styling */
+.code-symbol {
+    font-family: 'Courier New', Courier, monospace; /* Code jaisa font */
+    color: #90e0ef;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 6px;
+    letter-spacing: -1px;
+
+
+/* Footer Favicon with Premium Glow Effect */
+.footer-favicon {
+    width: 22px !important;
+    height: 22px !important;
+    margin-right: 10px !important;
+    vertical-align: middle !important;
+    border-radius: 4px !important;
+    object-fit: contain !important;
+    
+    /* Blue Glow Effect */
+    filter: drop-shadow(0 0 4px #90e0ef) drop-shadow(0 0 8px #00a8e8) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Jab mouse upar le jayen toh White/Blue Glow chamke */
+.footer-favicon:hover {
+    filter: drop-shadow(0 0 6px #ffffff) drop-shadow(0 0 12px #90e0ef) !important;
+    transform: scale(1.15) !important; /* Thora sa bara ho jayega */
+}
+
+</style>
+
+<script>
+// 1. Toggle Chat Box
+function toggleChat() {
+    var box = document.getElementById('ntChatBox');
+    if (box.style.display === 'none' || box.style.display === '') {
+        box.style.display = 'flex';
+        // Agar pehli baar khula hai to start message dikhayein
+        if (document.getElementById('ntChatBody').children.length === 0) {
+            processAction('start');
+        }
+    } else {
+        box.style.display = 'none';
+    }
+}
+
+// 2. Conversation Flow
+const flow = {
+    'start': {
+        text: "Assalam-o-Alaikum! Welcome to NomiTec. 🛡️<br>Hum aapki kya madad kar sakte hain?",
+        buttons: [
+            { label: "💰 Prices & Packages", action: "price_menu" },
+            { label: "📍 Location & Address", action: "location" },
+            { label: "⚙️ Our Services", action: "services" },
+            { label: "🛡️ Warranty", action: "warranty" },
+            { label: "👨‍💻 Talk to Human", action: "human" }
+        ]
+    },
+    'price_menu': {
+        text: "Humare paas CCTV ke behtareen packages available hain. Aapko konsa package chahiye?",
+        buttons: [
+            { label: "4 Cameras (Basic)", action: "pkg_4" },
+            { label: "8 Cameras (Standard)", action: "pkg_8" },
+            { label: "16 Cameras (Premium)", action: "pkg_16" },
+            { label: "32+ Cameras (Enterprise)", action: "pkg_32" },
+            { label: "🔙 Back to Main Menu", action: "start" }
+        ]
+    },
+    'pkg_4': {
+        text: "<b>4 Camera Basic Package</b><br>💰 Price: Rs. 70,000<br>✅ 4 HD Cameras<br>✅ 1 DVR/NVR<br>✅ 500GB HDD<br>✅ Free Installation",
+        buttons: [
+            { label: "Order on WhatsApp", action: "wa_4_camera" },
+            { label: "🔙 Back to Packages", action: "price_menu" }
+        ]
+    },
+    'pkg_8': {
+        text: "<b>8 Camera Standard Package</b><br>💰 Price: Rs. 120,000<br>✅ 8 HD Cameras<br>✅ 1 DVR/NVR<br>✅ 1TB HDD<br>✅ Night Vision",
+        buttons: [
+            { label: "Order on WhatsApp", action: "wa_8_camera" },
+            { label: "🔙 Back to Packages", action: "price_menu" }
+        ]
+    },
+    'pkg_16': {
+        text: "<b>16 Camera Premium Package</b><br>💰 Price: Rs. 220,000<br>✅ 16 HD Cameras<br>✅ Advanced NVR<br>✅ 2TB HDD<br>✅ Remote Monitoring",
+        buttons: [
+            { label: "Order on WhatsApp", action: "wa_16_camera" },
+            { label: "🔙 Back to Packages", action: "price_menu" }
+        ]
+    },
+    'pkg_32': {
+        text: "<b>32+ Camera Enterprise Package</b><br>💰 Custom Quote<br>✅ 32+ Cameras<br>✅ Server Grade NVR<br>✅ 4TB+ Storage<br>✅ 24/7 Support",
+        buttons: [
+            { label: "Get Quote on WhatsApp", action: "wa_32_camera" },
+            { label: "🔙 Back to Packages", action: "price_menu" }
+        ]
+    },
+    'location': {
+        text: "Humara main office <b>Keamari, Karachi</b> mein hai.<br>📍 Plot no.136, Tashkand Colony, Masan Chowk.<br>Hum puri Karachi mein free site survey dete hain!",
+        buttons: [
+            { label: "View on Google Maps", action: "wa_maps" },
+            { label: "🔙 Back to Main Menu", action: "start" }
+        ]
+    },
+    'services': {
+        text: "Hum yeh services faraham karte hain:<br>✅ CCTV Installation<br>✅ Intercom & Alarm Systems<br>✅ Networking & WiFi Setup<br>✅ Computer/Printer Maintenance",
+        buttons: [
+            { label: "Book a Service", action: "wa_service" },
+            { label: "🔙 Back to Main Menu", action: "start" }
+        ]
+    },
+    'warranty': {
+        text: "Ji haan! Hum saare products par <b>1 Saal ki Official Warranty</b> dete hain. Iske ilawa free after-sales support bhi shamil hai.",
+        buttons: [
+            { label: "🔙 Back to Main Menu", action: "start" }
+        ]
+    },
+    'human': {
+        text: "Zaroor! Aap seedha hamari team se WhatsApp par baat kar sakte hain.",
+        buttons: [
+            { label: "Chat on WhatsApp", action: "wa_human" }
+        ]
+    }
+};
+
+// 3. Core Logic to Process Actions
+function processAction(action) {
+    const chatBody = document.getElementById('ntChatBody');
+    
+    // Agar WhatsApp link hai to seedha open karein
+    if (action.startsWith('wa_')) {
+        let msg = "";
+        if(action === 'wa_4_camera') msg = "I want to order 4 Camera Package.";
+        else if(action === 'wa_8_camera') msg = "I want to order 8 Camera Package.";
+        else if(action === 'wa_16_camera') msg = "I want to order 16 Camera Package.";
+        else if(action === 'wa_32_camera') msg = "I need a quote for 32+ Camera Package.";
+        else if(action === 'wa_maps') msg = "Please send me your Google Maps location.";
+        else if(action === 'wa_service') msg = "I want to book a service.";
+        else msg = "Assalam-o-Alaikum! Mujhe NomiTec se baat karni hai.";
+        
+        window.open(`https://wa.me/923293985470?text=${encodeURIComponent(msg)}`, '_blank');
+        return;
+    }
+
+    const step = flow[action];
+    if (step) {
+        // Bot Message Add Karein
+        const botMsg = document.createElement('div');
+        botMsg.className = 'nt-message nt-bot';
+        botMsg.innerHTML = `<p>${step.text}</p>`;
+        chatBody.appendChild(botMsg);
+
+        // Buttons Add Karein
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'nt-buttons-container';
+        
+        step.buttons.forEach(btn => {
+            const button = document.createElement('button');
+            button.className = `nt-btn ${btn.action.startsWith('wa_') ? 'wa-btn' : ''} ${btn.label.includes('Back') ? 'back-btn' : ''}`;
+            button.innerHTML = btn.label;
+            button.onclick = () => processAction(btn.action);
+            btnContainer.appendChild(button);
+        });
+        chatBody.appendChild(btnContainer);
+
+        // Auto scroll to bottom
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+}
+
+// Live Search Database (Aap isme aur items add kar sakte hain)
+const searchData = [
+    { title: "CCTV Packages", desc: "4, 8, 16, 32 Camera Packages", link: "packages.html", icon: "fa-video" },
+    { title: "4 Camera Basic Package", desc: "Price: Rs. 70,000 | Free Installation", link: "packages.html", icon: "fa-box" },
+    { title: "8 Camera Standard Package", desc: "Price: Rs. 120,000 | Night Vision", link: "packages.html", icon: "fa-box" },
+    { title: "16 Camera Premium Package", desc: "Price: Rs. 220,000 | Remote Monitoring", link: "packages.html", icon: "fa-box" },
+    { title: "32+ Camera Enterprise", desc: "Custom Quote | Server Grade NVR", link: "packages.html", icon: "fa-server" },
+    
+    { title: "CCTV Installation", desc: "Professional security camera setup", link: "index.html#services", icon: "fa-tools" },
+    { title: "Networking & WiFi Setup", desc: "Office and home network solutions", link: "index.html#services", icon: "fa-wifi" },
+    { title: "Intercom Systems", desc: "Audio and video intercom installation", link: "index.html#services", icon: "fa-phone-volume" },
+    { title: "Alarm Systems", desc: "Security alarms for home and office", link: "index.html#services", icon: "fa-bell" },
+    { title: "Computer Maintenance", desc: "PC repair, software and hardware support", link: "index.html#services", icon: "fa-laptop" },
+    { title: "Printer & UPS Repair", desc: "Maintenance and troubleshooting", link: "index.html#services", icon: "fa-print" },
+    { title: "Biometric Attendance", desc: "Employee attendance systems", link: "index.html#services", icon: "fa-fingerprint" },
+    
+    { title: "Contact Us", desc: "Call 0329-3985470 | nomitec98@gmail.com", link: "index.html#contact", icon: "fa-envelope" },
+    { title: "Free Site Survey", desc: "Book a free survey anywhere in Karachi", link: "index.html#contact", icon: "fa-map-marked-alt" },
+    { title: "Our Location", desc: "Plot no.136, Tashkand Colony, Keamari, Karachi", link: "index.html#contact", icon: "fa-map-marker-alt" },
+    { title: "Warranty & Support", desc: "1 Year official warranty on all products", link: "index.html#services", icon: "fa-shield-alt" }
+];
+
+// Search Toggle Functions
+function toggleSearch() {
+    const container = document.getElementById('searchContainer');
+    const input = document.getElementById('searchInput');
+    if (container.style.display === 'block') {
+        closeSearch();
+    } else {
+        container.style.display = 'block';
+        setTimeout(() => input.focus(), 100);
+    }
+}
+
+function closeSearch() {
+    document.getElementById('searchContainer').style.display = 'none';
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchResultsList').innerHTML = '';
+}
+
+// Main Live Search Logic
+function liveSearch() {
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
+    const resultsList = document.getElementById('searchResultsList');
+    resultsList.innerHTML = ''; // Purane results clear karein
+
+    if (query.length < 2) {
+        resultsList.style.display = 'none';
+        return;
+    }
+
+    // Database mein search karein
+    const filtered = searchData.filter(item =>
+        item.title.toLowerCase().includes(query) ||
+        item.desc.toLowerCase().includes(query)
+    );
+
+    if (filtered.length > 0) {
+        filtered.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'search-result-item';
+            li.onclick = () => { window.location.href = item.link; }; // Click karne par link par le jayega
+            li.innerHTML = `
+                <div class="result-icon"><i class="fas ${item.icon}"></i></div>
+                <div class="result-info">
+                    <h4>${item.title}</h4>
+                    <p>${item.desc}</p>
+                </div>
+            `;
+            resultsList.appendChild(li);
+        });
+        resultsList.style.display = 'block';
+    } else {
+        resultsList.innerHTML = `
+            <li class="search-result-item" style="cursor:default; justify-content:center; text-align:center;">
+                <div class="result-info">
+                    <h4>No results found 😕</h4>
+                    <p>Try searching for "CCTV", "Packages", or "Contact"</p>
+                </div>
+            </li>`;
+        resultsList.style.display = 'block';
+    }
+}
+
+// Bahar click karne par search band ho jaye
+document.addEventListener('click', function(event) {
+    const container = document.getElementById('searchContainer');
+    const toggleBtn = document.querySelector('.search-toggle');
+    if (container && container.style.display === 'block' && !container.contains(event.target) && !toggleBtn.contains(event.target)) {
+        closeSearch();
+    }
+});
+
+</script>
+
+<script>
+// Perfect Scroll Spy for index.html#... Links
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const allNavLinks = document.querySelectorAll('.nav-links a');
+    const currentPath = window.location.pathname;
+
+    // 1. Page Load hone par Page Highlight karna (Packages, Portfolio, Home)
+    function updatePageHighlight() {
+        allNavLinks.forEach(link => link.classList.remove('active'));
+        
+        if (currentPath.includes('packages')) {
+            const link = document.querySelector('.nav-links a[href="packages.html"]');
+            if(link) link.classList.add('active');
+        } 
+        else if (currentPath.includes('portfolio')) {
+            const link = document.querySelector('.nav-links a[href="portfolio.html"]');
+            if(link) link.classList.add('active');
+        } 
+        else if (currentPath.endsWith('index.html') || currentPath === '/' || currentPath === '') {
+            // Agar bilkul upar hain toh Home highlight ho
+            if(window.scrollY < 100) {
+                const link = document.querySelector('.nav-links a[href="index.html"]');
+                if(link) link.classList.add('active');
+            }
+        }
+    }
+    updatePageHighlight();
+
+    // 2. Scroll Spy Logic (Sirf Homepage par chalegi)
+    if (currentPath.endsWith('index.html') || currentPath === '/' || currentPath === '') {
+        
+        const observerOptions = {
+            root: null,
+            // Header ki height ke hisaab se adjust karein (agar header bara hai to -120px kar dein)
+            rootMargin: '-100px 0px -60% 0px', 
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id'); // e.g., 'contact'
+                    
+                    // Sabse pehle purana active hatao
+                    allNavLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Ab dhundo ke kis link ke href ke aakhir mein #contact hai
+                    const activeLink = document.querySelector(`.nav-links a[href$="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Har section ko observe karein
+        sections.forEach(section => observer.observe(section));
+
+        // 3. Jab user bilkul top par scroll kare toh 'Home' highlight ho
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < 100) {
+                allNavLinks.forEach(link => link.classList.remove('active'));
+                const homeLink = document.querySelector('.nav-links a[href="index.html"]');
+                if(homeLink) homeLink.classList.add('active');
+            }
+        });
+    }
+});
+</script>
+
 </body>
 </html>
