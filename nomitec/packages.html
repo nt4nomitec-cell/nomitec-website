@@ -345,18 +345,29 @@
         <a href="index.html#services" class="mobile-nav-link">Services</a>
         <a href="packages.html" class="mobile-nav-link">Packages</a>
         <a href="index.html#coverage" class="mobile-nav-link">Coverage</a>
+	<a href="portfolio.html" class="mobile-nav-link">Portfolio</a>
         <a href="index.html#faq" class="mobile-nav-link">FAQ</a>
         <a href="index.html#about" class="mobile-nav-link">About</a>
         <a href="index.html#contact" class="mobile-nav-link">Contact</a>
         <a href="tel:03293985470" class="mobile-nav-link" style="background: var(--primary-blue); color: white; border-radius: 50px; text-align: center; border: none;"><i class="fas fa-phone"></i> Call Now</a>
     </div>
-    <section class="packages">
-        <div class="container">
-            <a href="index.html" class="back-home-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
-            <div class="section-header">
-                <h2>Our CCTV Packages</h2>
-                <p>Choose the perfect security package for your home or business. All packages include professional installation, configuration, and ongoing support.</p>
-            </div>
+    
+   <!-- === PACKAGES PAGE HEADER (Sahi Structure) === -->
+   <section class="page-hero">
+	<canvas class="hero-particles"></canvas>
+       <div class="container">
+           <h1>Our CCTV Packages</h1>
+           <p>Choose the perfect security package for your home or business. All packages include professional installation, configuration, and ongoing support.</p>
+       </div>
+    </section>          
+           
+<!-- Packages Intro Section (Gap Fill Karne Ke Liye) -->
+<div class="packages-intro">
+    <div class="container">
+        <h2>Our Recent Packages</h2>
+        <p>All packages details are mentioned below. Choose the perfect security solution for your home or business.</p>
+    </div>
+</div>
             <div class="packages-grid">
                 <div class="package-card">
                     <img src="images/package-1.jpg" alt="Basic CCTV Package - NomiTec" class="package-image">
@@ -654,6 +665,118 @@ footer {
     }
     .footer-bottom-left p { justify-content: center !important; }
 }
+
+/* === PAGE HEADER CSS (Portfolio + Packages dono ke liye) === */
+.page-hero {
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: white;
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('images/hero-bg.jpg') center/cover;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.page-hero p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .page-hero { padding: 80px 0 60px; }
+    .page-hero h1 { font-size: 36px; }
+    .page-hero p { font-size: 16px; padding: 0 15px; }
+}
+
+/* === PACKAGES INTRO SECTION === */
+.packages-intro {
+    background: var(--bg-body); /* White/Light background */
+    padding: 60px 0 30px; /* Upar se aur neeche se spacing */
+    text-align: center;
+}
+
+.packages-intro h2 {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Neeche ek choti si blue line (Optional, professional look ke liye) */
+.packages-intro h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-blue);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.packages-intro p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .packages-intro { padding: 40px 0 20px; }
+    .packages-intro h2 { font-size: 28px; }
+    .packages-intro p { font-size: 14px; padding: 0 15px; }
+}
+
+/* Page Hero ko relative karna zaroori hai */
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    /* ... aapki purani CSS yahan rahegi ... */
+}
+
+/* Canvas ko background par set karna */
+.hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Background par rahega */
+    pointer-events: none; /* Taake mouse clicks text par kaam karein */
+}
+
+/* Text ko canvas ke upar lana */
+.page-hero .container {
+    position: relative;
+    z-index: 2; /* Text canvas ke upar dikhega */
+}
+
 </style>
 
 
@@ -1236,6 +1359,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+
+<script>
+// === PAGE HEADER PARTICLES ANIMATION ===
+const particleCanvases = document.querySelectorAll('.hero-particles');
+
+particleCanvases.forEach(canvas => {
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function setCanvasSize() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+    }
+    setCanvasSize();
+
+    window.addEventListener('resize', () => {
+        setCanvasSize();
+        init();
+    });
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() * 1 - 0.5) * 0.5;
+            this.speedY = (Math.random() * 1 - 0.5) * 0.5;
+            this.color = 'rgba(255, 255, 255, 0.5)'; // White dots for blue background
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+            if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        particlesArray = [];
+        let numberOfParticles = (canvas.width * canvas.height) / 15000;
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+    }
+
+    function connect() {
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + 
+                              ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                    let opacityValue = 1 - (distance / 10000);
+                    ctx.strokeStyle = 'rgba(255, 255, 255,' + (opacityValue * 0.2) + ')'; // White lines
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+        }
+        connect();
+    }
+
+    init();
+    animate();
+});
+</script>
+
 
 </body>
 </html>
