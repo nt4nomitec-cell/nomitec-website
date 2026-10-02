@@ -93,22 +93,190 @@
         .mobile-nav.active { display: flex; }
         .mobile-nav a { font-size: 17px; padding: 14px; border-bottom: 1px solid var(--border-color); color: var(--text-primary); font-weight: 500; }
         .mobile-nav-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--text-primary); }
-        .hero { margin-top: 110px; background: linear-gradient(135deg, #16213e 0%, #0077b6 100%); color: #ffffff; padding: 60px 0; position: relative; overflow: hidden; }
-        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .hero-text h1 { font-size: 42px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-        .hero-text h1 span { color: var(--light-blue); }
-        .tagline { font-size: 17px; color: var(--green); margin-bottom: 20px; font-weight: 500; }
-        .hero-text p { font-size: 16px; margin-bottom: 30px; opacity: 0.9; }
-        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn-primary { background: var(--green); color: white; padding: 12px 25px; border-radius: 50px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; box-shadow: 0 4px 15px rgba(6,214,160,0.3); font-size: 15px; }
-        .btn-primary:hover { transform: translateY(-3px); }
-        .btn-secondary { background: transparent; color: white; padding: 12px 25px; border-radius: 50px; font-weight: 600; border: 2px solid white; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; font-size: 15px; }
-        .btn-secondary:hover { background: white; color: var(--dark-blue); }
-        .hero-image { position: relative; perspective: 1000px; display: flex; justify-content: center; align-items: center; }
-        .hero-image img { max-width: 100%; max-height: 400px; width: auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); animation: hikvisionFloat 6s ease-in-out infinite; transform-origin: center center; }
-        @keyframes hikvisionFloat { 0%, 100% { transform: translateY(0px) rotateY(0deg) scale(1); } 25% { transform: translateY(-15px) rotateY(-3deg) scale(1.03); } 50% { transform: translateY(-5px) rotateY(0deg) scale(1); } 75% { transform: translateY(-15px) rotateY(3deg) scale(1.03); } }
-        .camera-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,168,232,0.3) 0%, transparent 70%); border-radius: 50%; animation: glowPulse 4s ease-in-out infinite; pointer-events: none; z-index: 0; }
-        @keyframes glowPulse { 0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); } }
+        
+/* === COMPLETE NEW ANIMATED HERO CSS === */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    margin-top: 110px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+/* 1. Animated Background Image (Ken Burns Effect) */
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('images/hero-bg.png') center/cover no-repeat;
+    animation: kenBurns 20s ease-in-out infinite alternate;
+    z-index: 1;
+}
+@keyframes kenBurns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.15) translate(-2%, -2%); }
+}
+
+/* 2. Dark Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(10, 20, 40, 0.92) 0%, rgba(0, 119, 182, 0.75) 100%);
+    z-index: 2;
+}
+
+/* 3. Advanced Particles Canvas */
+#particles-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Hero Content Layout */
+.hero-content {
+    position: relative;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    padding: 60px 0;
+}
+<!-- Top Badge Line -->
+<div class="hero-top-badge">
+    <i class="fas fa-shield-halved"></i> Our Security is Your Peace of Mind.
+</div>
+
+/* Updated Logo Badge - No White Background */
+.hero-logo-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 12px 20px;
+    background: rgba(0, 119, 182, 0.15); /* Dark blue transparent - white ki jagah */
+    backdrop-filter: blur(5px); /* Blur kam kar diya */
+    border: 1px solid rgba(144, 224, 239, 0.4); /* Border thori strong */
+    border-radius: 50px;
+    width: fit-content;
+    animation: slideInLeft 1s ease-out;
+    box-shadow: 0 4px 15px rgba(0, 119, 182, 0.2); /* Blue glow */
+}
+
+.hero-logo-img {
+    width: 60px; /* 45px se bara karke 60px kar diya */
+    height: 60px;
+    border-radius: 50%;
+    background: transparent;
+    padding: 5px; /* Thora padding barha diya */
+    object-fit: contain; /* Logo ko pura dikhane ke liye */
+    filter: drop-shadow(0 0 8px rgba(144, 224, 239, 0.8));
+    animation: logoPulse 3s ease-in-out infinite;
+}
+@keyframes logoPulse {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(144, 224, 239, 0.6)); }
+    50% { filter: drop-shadow(0 0 15px rgba(144, 224, 239, 1)); }
+}
+.hero-logo-text h1.hero-brand {
+    font-size: 24px; font-weight: 800; color: white; margin: 0; line-height: 1;
+}
+.hero-logo-text span.hero-tagline-small {
+    font-size: 10px; color: #90e0ef; letter-spacing: 1px;
+}
+
+/* Hero Text */
+.hero-text h1.hero-title {
+    font-size: 48px; font-weight: 800; color: white; line-height: 1.15; margin-bottom: 20px;
+    animation: slideInLeft 1s ease-out 0.2s both;
+}
+.hero-title .highlight { color: #90e0ef; }
+.hero-subtitle {
+    font-size: 17px; color: rgba(255, 255, 255, 0.85); margin-bottom: 30px; line-height: 1.7;
+    animation: slideInLeft 1s ease-out 0.4s both;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 40px;
+    animation: slideInLeft 1s ease-out 0.6s both;
+}
+.btn-hero-primary {
+    background: linear-gradient(135deg, #06d6a0, #00a8e8); color: white;
+    padding: 14px 28px; border-radius: 50px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
+    box-shadow: 0 8px 25px rgba(6, 214, 160, 0.4); font-size: 15px; text-decoration: none;
+}
+.btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(6, 214, 160, 0.6); }
+.btn-hero-secondary {
+    background: transparent; color: white; padding: 14px 28px; border-radius: 50px; font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.3); display: inline-flex; align-items: center; gap: 8px;
+    transition: 0.3s; font-size: 15px; text-decoration: none;
+}
+.btn-hero-secondary:hover { background: white; color: #0077b6; border-color: white; }
+
+/* Mini Stats */
+.hero-stats {
+    display: flex; gap: 35px; animation: slideInLeft 1s ease-out 0.8s both;
+}
+.stat { display: flex; flex-direction: column; }
+.stat-num { font-size: 28px; font-weight: 800; color: #90e0ef; }
+.stat-label { font-size: 12px; color: rgba(255, 255, 255, 0.7); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Floating Camera Image */
+.hero-image {
+    position: relative; display: flex; justify-content: center; align-items: center;
+    animation: slideInRight 1s ease-out 0.5s both;
+}
+.floating-camera {
+    max-width: 100%; max-height: 450px;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+    animation: cameraFloat 6s ease-in-out infinite;
+}
+@keyframes cameraFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+}
+.camera-glow {
+    position: absolute; width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(0, 168, 232, 0.4) 0%, transparent 70%);
+    border-radius: 50%; animation: glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* Slide Animations */
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Mobile Responsive Overrides */
+@media (max-width: 968px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-logo-badge { margin: 0 auto 25px; }
+    .hero-text h1.hero-title { font-size: 36px; }
+    .hero-buttons { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-image { order: -1; }
+    .floating-camera { max-height: 300px; }
+}
+@media (max-width: 576px) {
+    .hero { margin-top: 90px; }
+    .hero-text h1.hero-title { font-size: 28px; }
+    .hero-subtitle { font-size: 14px; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .stat-num { font-size: 22px; }
+    .btn-hero-primary, .btn-hero-secondary { padding: 12px 20px; font-size: 14px; }
+}
+
+
+
         .services { padding: 80px 0; background: var(--bg-secondary); }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 15px; }
@@ -243,7 +411,6 @@
             .social-links { justify-content: center; } .footer-column { text-align: center; } .footer-column ul li { justify-content: center; }
         }
 
-
     </style>
 <!-- Local Business Schema for Google SEO -->
 <script type="application/ld+json">
@@ -350,25 +517,109 @@
         <a href="#contact" class="mobile-nav-link">Contact</a>
         <a href="tel:03293985470" class="mobile-nav-link" style="background: var(--primary-blue); color: white; border-radius: 50px; text-align: center; border: none;"><i class="fas fa-phone"></i> Call Now</a>
     </div>
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Professional <span>CCTV Installation</span> & IT Services in Karachi</h1>
-                    <p class="tagline"><i class="fas fa-shield-alt"></i> Our Security is Your Peace of Mind.</p>
-                    <p>Protect your home, office, and business with cutting-edge surveillance systems, intercom solutions, and comprehensive IT maintenance services from NomiTec.</p>
-                    <div class="hero-buttons">
-                        <a href="tel:03293985470" class="btn-primary"><i class="fas fa-phone"></i> Call 0329-3985470</a>
-                        <a href="#services" class="btn-secondary"><i class="fas fa-list"></i> Our Services</a>
-                    </div>
+    
+<!-- === COMPLETE NEW ANIMATED HERO SECTION === -->
+<section class="hero" id="home">
+    <!-- 1. Animated Background Image -->
+    <div class="hero-bg"></div>
+    
+    <!-- 2. Dark Overlay (Taake text readable rahe) -->
+    <div class="hero-overlay"></div>
+    
+    <!-- 3. Advanced Network Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="container hero-content">
+        <!-- Left Side: Text + Logo -->
+        <div class="hero-text">
+            <!-- Animated Logo Badge -->
+            <div class="hero-logo-badge">
+                <img src="images/logo.png" alt="NomiTec Logo" class="hero-logo-img">
+                <div class="hero-logo-text">
+                    <h1 class="hero-brand">NomiTec</h1>
+                    <span class="hero-tagline-small">Our Security is Your Peace of Mind</span>
                 </div>
-                <div class="hero-image">
-                    <div class="camera-glow"></div>
-                    <img src="images/hikvision-camera.png" alt="Hikvision Professional CCTV Dome Camera - NomiTec">
+            </div>
+
+            <h1 class="hero-title">Professional <span class="highlight">CCTV Installation</span> & IT Services in Karachi</h1>
+            <p class="hero-subtitle">Protect your home, office, and business with cutting-edge surveillance systems, intercom solutions, and comprehensive IT maintenance services.</p>
+            
+            <div class="hero-buttons">
+                <a href="tel:03293985470" class="btn-hero-primary">
+                    <i class="fas fa-phone"></i> Call 0329-3985470
+                </a>
+                <a href="#services" class="btn-hero-secondary">
+                    <i class="fas fa-list"></i> Our Services
+                </a>
+            </div>
+
+            <!-- Mini Stats -->
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num">1500+</span>
+                    <span class="stat-label">Cameras Installed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">500+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">24/7</span>
+                    <span class="stat-label">Support</span>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- === 5 ANIMATED SERVICE BOXES === -->
+<div class="hero-services-grid">
+    <!-- Box 1 -->
+    <div class="service-box">
+        <div class="box-icon"><i class="fas fa-video"></i></div>
+        <div class="box-text">
+            <h4>CCTV Installation</h4>
+            <p>HD & 4K Cameras</p>
+        </div>
+    </div>
+    
+    <!-- Box 2 -->
+    <div class="service-box">
+        <div class="box-icon"><i class="fas fa-network-wired"></i></div>
+        <div class="box-text">
+            <h4>Networking</h4>
+            <p>LAN, WiFi & Racks</p>
+        </div>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="service-box">
+        <div class="box-icon"><i class="fas fa-bell"></i></div>
+        <div class="box-text">
+            <h4>Alarm Systems</h4>
+            <p>Smart Security</p>
+        </div>
+    </div>
+
+    <!-- Box 4 -->
+    <div class="service-box">
+        <div class="box-icon"><i class="fas fa-phone-volume"></i></div>
+        <div class="box-text">
+            <h4>Intercom</h4>
+            <p>Office & Home</p>
+        </div>
+    </div>
+
+    <!-- Box 5 (Full Width at Bottom) -->
+    <div class="service-box full-width">
+        <div class="box-icon"><i class="fas fa-laptop-code"></i></div>
+        <div class="box-text">
+            <h4>IT Maintenance & Support</h4>
+            <p>Computer, Printer & UPS Repair</p>
+        </div>
+    </div>
+</div>
+</section>
+
+
     <section class="services" id="services">
         <div class="container">
             <div class="section-header">
@@ -531,29 +782,29 @@
         <div class="portfolio-grid">
     <!-- Project 1 -->
     <div class="portfolio-card">
-        <img src="images/project1.jpg" alt="Warehouse CCTV Setup">
+        <img src="images/project/JSG4.jpg" alt="JSons Pakistan – CCTV Camera Installation">
         <div class="portfolio-overlay">
-            <h4>Warehouse Security Setup</h4>
-            <p>Korangi Industrial Area • 16 Cameras</p>
+            <h4>JSons Pakistan – CCTV Camera Installation</h4>
+            <p>Sector 23 Korangi Industrial Area, Karachi</p>
         </div>
     </div>
 
 
     <!-- Project 2 -->
     <div class="portfolio-card">
-        <img src="images/project2.jpg" alt="Office Networking">
+        <img src="images/project/BBQPG5.jpg" alt="BBQ">
         <div class="portfolio-overlay">
-            <h4>Office Networking & WiFi</h4>
-            <p>DHA Phase 6 • Full LAN Setup</p>
+            <h4>Bar-B-Q Tonight – Wi-Fi & Network Infrastructure</h4>
+            <p>5/1، Boating Basin, Block 5 Clifton, Karachi, 75600</p>
         </div>
     </div>
 
     <!-- Project 3 -->
     <div class="portfolio-card">
-        <img src="images/project3.jpg" alt="Smart Home CCTV">
+        <img src="images/project/BBQLG1.jpg" alt="LUCKY">
         <div class="portfolio-overlay">
-            <h4>Smart Home Security</h4>
-            <p>Clifton • 8 Camera HD Setup</p>
+            <h4>32-Camera CCTV Setup</h4>
+            <p>Lucky One Mall, Karachi</p>
         </div>
     </div>
 </div>
@@ -630,6 +881,43 @@
 </section>
 
 <style>
+
+<div class="hero-top-badge">
+    <!-- Yeh Shield SVG hai jo 100% nazar aayega -->
+    <svg class="hero-shield-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    </svg>
+    Our Security is Your Peace of Mind.
+</div>
+
+/* === CAMERA SIZE CHOTA KARNA === */
+.floating-camera {
+    max-width: 100%;
+    max-height: 100px; /* 450px se kam karke 320px kar diya */
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+    animation: cameraFloat 6s ease-in-out infinite;
+}
+
+/* Camera glow bhi chota karein */
+.camera-glow {
+    position: absolute;
+    width: 280px; /* 350px se kam kar diya */
+    height: 280px;
+    background: radial-gradient(circle, rgba(0, 168, 232, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* Mobile par camera aur chota */
+@media (max-width: 968px) {
+    .floating-camera { max-height: 250px; }
+    .camera-glow { width: 220px; height: 220px; }
+}
+@media (max-width: 576px) {
+    .floating-camera { max-height: 200px; }
+    .camera-glow { width: 180px; height: 180px; }
+    .hero-top-badge { font-size: 13px; padding: 8px 16px; }
+}
 
 /* Active Tab Highlighting */
 .nav-links a.active {
@@ -779,6 +1067,181 @@
     .smart-search-container { top: 100px; }
     .search-box-wrapper { margin: 0 15px; }
     .search-results-dropdown { margin: 10px 15px 15px; }
+}
+
+/* === ANIMATED SERVICE BOXES CSS === */
+.hero-services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 Columns */
+    gap: 15px;
+    width: 100%;
+    max-width: 500px; /* Right side par zyada chora na ho */
+    margin: 0 auto; /* Center in its column */
+}
+
+/* 5th Box ko full width dena taake layout balanced rahe */
+.service-box.full-width {
+    grid-column: span 2; 
+}
+
+.service-box {
+    background: rgba(255, 255, 255, 0.05); /* Glass effect */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(144, 224, 239, 0.2);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUpBox 0.6s ease-out forwards;
+}
+
+/* === PERFECT LOGO & TEXT ALIGNMENT === */
+.hero-logo-badge {
+    display: flex !important;
+    align-items: center !important; /* Yeh line logo aur text ko bilkul beech mein lock karegi */
+    justify-content: flex-start !important;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+    background: rgba(0, 119, 182, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(144, 224, 239, 0.4);
+    border-radius: 50px;
+    width: fit-content;
+    animation: slideInLeft 1s ease-out;
+}
+
+/* Image ko uper jane se rokna */
+.hero-logo-img {
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+    padding: 2px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(144, 224, 239, 0.8));
+    animation: logoPulse 3s ease-in-out infinite;
+    margin: 0 !important; /* Default margin hataya */
+    display: block;
+}
+
+/* Text container ko center karna */
+.hero-logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+/* NomiTec text ki alignment */
+.hero-logo-text h1.hero-brand {
+    font-size: 22px; 
+    font-weight: 800; 
+    color: white; 
+    margin: 0 !important; /* h1 ka default margin hatane se alignment theek ho jayegi */
+    padding: 0 !important;
+    line-height: 1.1 !important;
+}
+
+/* Tagline text ki alignment */
+.hero-logo-text span.hero-tagline-small {
+    font-size: 11px; 
+    color: #90e0ef; 
+    letter-spacing: 0.5px;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+}
+
+/* Shield Icon Styling */
+.hero-shield-icon {
+    width: 18px;
+    height: 18px;
+    color: #06d6a0 !important; /* Teal/Green color */
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+
+/* Staggered Animation Delays (Ek ke baad ek aayenge) */
+.service-box:nth-child(1) { animation-delay: 0.2s; }
+.service-box:nth-child(2) { animation-delay: 0.4s; }
+.service-box:nth-child(3) { animation-delay: 0.6s; }
+.service-box:nth-child(4) { animation-delay: 0.8s; }
+.service-box:nth-child(5) { animation-delay: 1.0s; }
+
+@keyframes fadeInUpBox {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effect: Glow aur Upar Uthna */
+.service-box:hover {
+    background: rgba(0, 168, 232, 0.15);
+    border-color: #90e0ef;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 168, 232, 0.2);
+}
+
+/* Icon Styling */
+.box-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, rgba(6, 214, 160, 0.2), rgba(0, 168, 232, 0.2));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #90e0ef;
+    font-size: 20px;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+.service-box:hover .box-icon {
+    background: linear-gradient(135deg, #06d6a0, #00a8e8);
+    color: white;
+    transform: rotate(10deg);
+}
+
+/* Text Styling */
+.box-text h4 {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 3px 0;
+}
+.box-text p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+    .hero-services-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
+@media (max-width: 576px) {
+    .hero-services-grid {
+        grid-template-columns: 1fr; /* Mobile par 1 column */
+    }
+    .service-box.full-width {
+        grid-column: span 1;
+    }
 }
 </style>
 
@@ -1803,6 +2266,88 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+</script>
+
+<script>
+// === ADVANCED NETWORK PARTICLES ANIMATION ===
+const canvas = document.getElementById('particles-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function setCanvasSize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    setCanvasSize();
+
+    window.addEventListener('resize', () => {
+        setCanvasSize();
+        init();
+    });
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() * 1 - 0.5) * 0.5;
+            this.speedY = (Math.random() * 1 - 0.5) * 0.5;
+            this.color = 'rgba(144, 224, 239, 0.6)';
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+            if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        particlesArray = [];
+        let numberOfParticles = window.innerWidth < 768 ? (canvas.width * canvas.height) / 25000 : (canvas.width * canvas.height) / 15000;
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+    }
+
+    function connect() {
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
+                              ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                    let opacityValue = 1 - (distance / 10000);
+                    ctx.strokeStyle = 'rgba(144, 224, 239,' + (opacityValue * 0.2) + ')';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+        }
+        connect();
+    }
+
+    init();
+    animate();
+}
 </script>
 
 </body>
